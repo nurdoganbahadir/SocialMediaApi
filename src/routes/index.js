@@ -8,5 +8,6 @@ router.use("/token", require("./token"));
 router.use("/post", require("./post"));
 router.use("/token", require("./token"));
 router.use("/comment", require("./comment"));
+router.use("/like", require("./like"));
 
 module.exports = router;

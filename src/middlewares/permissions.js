@@ -8,5 +8,6 @@ module.exports = {
         message: "Unauthorized. Please log in.",
       });
     }
+    next();
   },
 };

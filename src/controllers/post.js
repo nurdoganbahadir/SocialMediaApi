@@ -1,6 +1,7 @@
 "use strict";
 
 const Post = require("../models/post");
+const Like = require("../models/like");
 
 module.exports = {
   list: async (req, res) => {

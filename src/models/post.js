@@ -16,10 +16,12 @@ const PostSchema = new mongoose.Schema(
     imageUrl: {
       type: String,
     },
-    likes: {
-      type: Array,
-      default: [],
-    },
+    likes: [
+      {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "Like",
+      },
+    ],
     comments: [
       {
         type: mongoose.Schema.Types.ObjectId,
