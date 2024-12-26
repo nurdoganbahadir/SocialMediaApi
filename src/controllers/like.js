@@ -2,7 +2,6 @@
 
 const Like = require("../models/like");
 const Post = require("../models/post");
-const { update } = require("./comment");
 
 module.exports = {
   list: async (req, res) => {
@@ -11,7 +10,7 @@ module.exports = {
       "-password -__v -email -birthdate -followers -following -createdAt -updatedAt -bio"
     );
 
-    res.status(200).json({
+    res.status(200).send({
       error: false,
       details: await res.getModelListDetails(Like),
       data,

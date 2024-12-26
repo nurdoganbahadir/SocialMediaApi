@@ -1,19 +1,23 @@
 "use strict";
 
-const Post = require("../models/post");
+const Story = require("../models/story");
 
 module.exports = {
   list: async (req, res) => {
-    const data = await res.getModelList(Post, {}, "comments likes");
+    const data = await Story.find().populate(
+      "userId",
+      "-password -__v -email -birthdate -followers -following -createdAt -updatedAt -bio"
+    );
 
     res.status(200).send({
       error: false,
-      details: await res.getModelListDetails(Post),
+      details: await res.getModelListDetails(Story),
       data,
     });
   },
+
   create: async (req, res) => {
-    const data = await Post.create({ ...req.body, userId: req.user._id });
+    const data = await Story.create({ ...req.body, userId: req.user._id });
 
     res.status(201).send({
       error: false,
@@ -22,28 +26,28 @@ module.exports = {
   },
 
   read: async (req, res) => {
-    const data = await Post.findOne({ _id: req.params.id }).populate(
-      "comments"
-    );
+    const data = await Story.findOne({ _id: req.params.id });
 
     res.status(200).send({
       error: false,
       data,
     });
   },
+
   update: async (req, res) => {
-    const data = await Post.updateOne({ _id: req.params.id }, req.body, {
+    const data = await Story.updateOne({ _id: req.params.id }, req.body, {
       runValidators: true,
     });
 
     res.status(200).send({
       error: false,
       data,
-      new: await Post.findOne({ _id: req.params.id }).populate("comments"),
+      new: await Story.findOne({ _id: req.params.id }),
     });
   },
+
   delete: async (req, res) => {
-    const data = await Post.deleteOne({ _id: req.params.id });
+    const data = await Story.deleteOne({ _id: req.params.id });
 
     res.status(data.deletedCount ? 204 : 404).send({
       error: !data.deletedCount,
