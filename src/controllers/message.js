@@ -43,13 +43,9 @@ module.exports = {
     try {
       const { conversationId } = req.params;
 
-      console.log(conversationId);
-
       const messages = await Message.find({ conversationId })
         .populate("senderId", "username profileImage")
         .populate("receiverId", "username profileImage");
-
-      console.log(messages);
 
       res.status(200).send({
         error: false,
@@ -66,8 +62,6 @@ module.exports = {
   getConversation: async (req, res) => {
     try {
       const { conversationId } = req.params;
-
-      console.log(conversationId);
 
       const conversation = await Conversation.findById(conversationId);
 
