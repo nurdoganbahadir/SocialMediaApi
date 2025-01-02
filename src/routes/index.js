@@ -12,5 +12,6 @@ router.use("/like", require("./like"));
 router.use("/story", require("./story"));
 router.use("/follow", require("./follow"));
 router.use("/message", require("./message"));
+router.use("/notification", require("./notification"));
 
 module.exports = router;

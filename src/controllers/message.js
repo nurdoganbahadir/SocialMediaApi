@@ -2,6 +2,7 @@
 
 const Message = require("../models/message");
 const Conversation = require("../models/conversation");
+const Notification = require("../models/notification");
 
 module.exports = {
   sendMessage: async (req, res) => {
@@ -25,6 +26,13 @@ module.exports = {
         senderId: req.user._id,
         receiverId,
         message,
+      });
+
+      // Bildirim oluştur
+      await Notification.create({
+        userId: receiverId,
+        type: "message",
+        message: `${req.user.username}: ${message}`,
       });
 
       res.status(201).send({
