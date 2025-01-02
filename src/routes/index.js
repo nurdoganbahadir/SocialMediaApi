@@ -11,5 +11,6 @@ router.use("/comment", require("./comment"));
 router.use("/like", require("./like"));
 router.use("/story", require("./story"));
 router.use("/follow", require("./follow"));
+router.use("/message", require("./message"));
 
 module.exports = router;

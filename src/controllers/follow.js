@@ -2,7 +2,6 @@
 
 const Follow = require("../models/follow");
 const User = require("../models/user");
-const { update } = require("./comment");
 
 module.exports = {
   list: async (req, res) => {
@@ -114,7 +113,7 @@ module.exports = {
         }
       );
 
-      res.status(200).send({
+      res.status(204).send({
         error: false,
         message: "Unfollow successful",
       });
