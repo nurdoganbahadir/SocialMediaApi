@@ -13,5 +13,6 @@ router.use("/story", require("./story"));
 router.use("/follow", require("./follow"));
 router.use("/message", require("./message"));
 router.use("/notification", require("./notification"));
+router.use("/documents", require("./document"));
 
 module.exports = router;

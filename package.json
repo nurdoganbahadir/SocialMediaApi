@@ -1,4 +1,14 @@
 {
+  "title": "Social Media API",
+  "name": "Socialapi",
+  "version": "1.0.0",
+  "description": "Social Media API System",
+  "main": "index.js",
+  "scripts": {
+    "start": "nodemon",
+    "debug": "DEBUG=* nodemon",
+    "dev": "node swaggerAutogen && nodemon index.js"
+  },
   "dependencies": {
     "dotenv": "^16.4.7",
     "express": "^4.21.2",

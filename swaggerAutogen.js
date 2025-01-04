@@ -12,7 +12,7 @@ const document = {
     description: packageJson.description,
     version: packageJson.version,
   },
-  host: `localhost:${PORT}`,
+  host: `http://127.0.0.1:${PORT}`,
   basePath: "/",
   schemes: ["http", "https"],
   consumes: ["application/json"],
@@ -47,6 +47,6 @@ const document = {
 };
 
 const routes = ["./index.js"];
-const outputFile = "./src/configs/swagger.js";
+const outputFile = "./src/configs/swagger.json";
 
 swaggerAutogen(outputFile, routes, document);
