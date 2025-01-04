@@ -12,6 +12,19 @@ const {
 
 module.exports = {
   login: async (req, res) => {
+    /*
+           #swagger.tags = ["Authentication"]
+           #swagger.summary = "Login"
+           #swagger.description = 'Login with username (or email) and password for get Token and JWT.'
+           #swagger.parameters["body"] = {
+               in: "body",
+               required: true,
+               schema: {
+                   "username": "test",
+                   "password": "1234",
+               }
+           }
+       */
     const { username, email, password } = req.body;
 
     if (!((username || email) && password)) {
@@ -37,11 +50,9 @@ module.exports = {
     }
 
     // JWT
-    const accessToken = jwt.sign(
-      user.toJSON(),
-      process.env.ACCESS_KEY,
-      { expiresIn: "1h" }
-    );
+    const accessToken = jwt.sign(user.toJSON(), process.env.ACCESS_KEY, {
+      expiresIn: "1h",
+    });
     const refreshToken = jwt.sign(
       { _id: user._id, password: user.password },
       process.env.REFRESH_KEY,
