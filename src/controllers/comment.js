@@ -2,7 +2,7 @@
 
 const Comment = require("../models/comment");
 const Post = require("../models/post");
-
+const Notification = require("../models/notification");
 module.exports = {
   list: async (req, res) => {
     // const data = await res.getModelList(Comment).populate("userId");
@@ -17,8 +17,11 @@ module.exports = {
       data,
     });
   },
+
   create: async (req, res) => {
     const { postId, content } = req.body;
+
+    const { userId } = await Post.findOne({ _id: postId }).select("userId");
 
     const newComment = await Comment.create({
       postId,
@@ -31,11 +34,16 @@ module.exports = {
       { $push: { comments: newComment._id } }
     );
 
+    await Notification.create({
+      userId: userId.toString(),
+      type: "message",
+      message: `${req.user.username} commented on your post`,
+    });
+
     res.status(201).send({
       error: false,
       data: newComment,
     });
-
   },
 
   read: async (req, res) => {
