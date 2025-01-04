@@ -48,40 +48,26 @@ module.exports = {
   },
 
   getMessages: async (req, res) => {
-    try {
-      const { conversationId } = req.params;
+    const { conversationId } = req.params;
 
-      const messages = await Message.find({ conversationId })
-        .populate("senderId", "username profileImage")
-        .populate("receiverId", "username profileImage");
+    const messages = await Message.find({ conversationId })
+      .populate("senderId", "username profileImage")
+      .populate("receiverId", "username profileImage");
 
-      res.status(200).send({
-        error: false,
-        data: messages,
-      });
-    } catch (error) {
-      res.status(500).send({
-        error: true,
-        message: error.message,
-      });
-    }
+    res.status(200).send({
+      error: false,
+      data: messages,
+    });
   },
 
   getConversation: async (req, res) => {
-    try {
-      const { conversationId } = req.params;
+    const { conversationId } = req.params;
 
-      const conversation = await Conversation.findById(conversationId);
+    const conversation = await Conversation.findById(conversationId);
 
-      res.status(200).send({
-        error: false,
-        data: conversation,
-      });
-    } catch (error) {
-      res.status(500).send({
-        error: true,
-        message: error.message,
-      });
-    }
+    res.status(200).send({
+      error: false,
+      data: conversation,
+    });
   },
 };

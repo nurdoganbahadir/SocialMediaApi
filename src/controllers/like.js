@@ -2,6 +2,7 @@
 
 const Like = require("../models/like");
 const Post = require("../models/post");
+const Notification = require("../models/notification");
 
 module.exports = {
   list: async (req, res) => {
@@ -20,12 +21,21 @@ module.exports = {
   create: async (req, res) => {
     const { postId } = req.body;
 
+    const { userId } = await Post.findOne({ _id: postId }).select("userId");
+
     const newLike = await Like.create({
       postId,
       userId: req.user._id,
     });
 
     await Post.updateOne({ _id: postId }, { $push: { likes: newLike._id } });
+
+    // Bildirim oluştur
+    await Notification.create({
+      userId: userId.toString(),
+      type: "message",
+      message: `${req.user.username} liked your post`,
+    });
 
     res.status(201).json({
       error: false,
