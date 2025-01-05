@@ -40,6 +40,7 @@ module.exports = {
 
     const data = await Post.create({ ...req.body, userId: req.user._id });
 
+
     res.status(201).send({
       error: false,
       data,
