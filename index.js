@@ -18,6 +18,8 @@ app.use(express.json());
 
 app.use(require("./src/middlewares/authentication"));
 
+app.use(require("./src/middlewares/logger"));
+
 app.use(require("./src/middlewares/queryHandler"));
 
 /*------------------------------------*/
