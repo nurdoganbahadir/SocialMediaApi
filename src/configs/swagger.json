@@ -117,15 +117,95 @@
     },
     "/user/": {
       "get": {
-        "description": "",
+        "tags": [
+          "User"
+        ],
+        "summary": "List User",
+        "description": "\r  You can send query with endpoint for search[], sort[], page and limit.\r  <ul> Examples:\r   <li>URL/?<b>search[field1]=value1&search[field2]=value2</b></li>\r   <li>URL/?<b>sort[field1]=1&sort[field2]=-1</b></li>\r   <li>URL/?<b>page=2&limit=1</b></li>\r  </ul>\r  ",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "type": "object",
+              "properties": {
+                "username": {
+                  "type": "string",
+                  "example": "test01"
+                },
+                "password": {
+                  "type": "string",
+                  "example": "Test123?"
+                },
+                "email": {
+                  "type": "string",
+                  "example": "test@gmail.com"
+                },
+                "bio": {
+                  "type": "string",
+                  "example": "example bio description"
+                },
+                "birthdate": {
+                  "type": "string",
+                  "example": "01-01-2000"
+                },
+                "profileImage": {
+                  "type": "string",
+                  "example": "profile image url"
+                }
+              }
+            }
+          }
+        ],
         "responses": {
-          "200": {
-            "description": "OK"
+          "default": {
+            "description": ""
           }
         }
       },
       "post": {
+        "tags": [
+          "User"
+        ],
+        "summary": "Create User",
         "description": "",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "type": "object",
+              "properties": {
+                "username": {
+                  "type": "string",
+                  "example": "test01"
+                },
+                "password": {
+                  "type": "string",
+                  "example": "Test123?"
+                },
+                "email": {
+                  "type": "string",
+                  "example": "test@gmail.com"
+                },
+                "bio": {
+                  "type": "string",
+                  "example": "example bio description"
+                },
+                "birthdate": {
+                  "type": "string",
+                  "example": "01-01-2000"
+                },
+                "profileImage": {
+                  "type": "string",
+                  "example": "profile image url"
+                }
+              }
+            }
+          }
+        ],
         "responses": {
           "201": {
             "description": "Created"
@@ -135,6 +215,10 @@
     },
     "/user/{id}": {
       "get": {
+        "tags": [
+          "User"
+        ],
+        "summary": "Get Single User",
         "description": "",
         "parameters": [
           {
@@ -151,6 +235,10 @@
         }
       },
       "put": {
+        "tags": [
+          "User"
+        ],
+        "summary": "Update User",
         "description": "",
         "parameters": [
           {
@@ -158,6 +246,40 @@
             "in": "path",
             "required": true,
             "type": "string"
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "type": "object",
+              "properties": {
+                "username": {
+                  "type": "string",
+                  "example": "test01"
+                },
+                "password": {
+                  "type": "string",
+                  "example": "Test123?"
+                },
+                "email": {
+                  "type": "string",
+                  "example": "test@gmail.com"
+                },
+                "bio": {
+                  "type": "string",
+                  "example": "example bio description"
+                },
+                "birthdate": {
+                  "type": "string",
+                  "example": "01-01-2000"
+                },
+                "profileImage": {
+                  "type": "string",
+                  "example": "profile image url"
+                }
+              }
+            }
           }
         ],
         "responses": {
@@ -167,6 +289,10 @@
         }
       },
       "delete": {
+        "tags": [
+          "User"
+        ],
+        "summary": "Delete Single User",
         "description": "",
         "parameters": [
           {
@@ -186,6 +312,10 @@
         }
       },
       "patch": {
+        "tags": [
+          "User"
+        ],
+        "summary": "Update User",
         "description": "",
         "parameters": [
           {
@@ -193,93 +323,40 @@
             "in": "path",
             "required": true,
             "type": "string"
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "OK"
-          }
-        }
-      }
-    },
-    "/token/": {
-      "get": {
-        "description": "",
-        "responses": {
-          "200": {
-            "description": "OK"
-          }
-        }
-      },
-      "post": {
-        "description": "",
-        "responses": {
-          "201": {
-            "description": "Created"
-          }
-        }
-      }
-    },
-    "/token/{id}": {
-      "get": {
-        "description": "",
-        "parameters": [
-          {
-            "name": "id",
-            "in": "path",
-            "required": true,
-            "type": "string"
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "OK"
-          }
-        }
-      },
-      "put": {
-        "description": "",
-        "parameters": [
-          {
-            "name": "id",
-            "in": "path",
-            "required": true,
-            "type": "string"
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "OK"
-          }
-        }
-      },
-      "delete": {
-        "description": "",
-        "parameters": [
-          {
-            "name": "id",
-            "in": "path",
-            "required": true,
-            "type": "string"
-          }
-        ],
-        "responses": {
-          "204": {
-            "description": "No Content"
           },
-          "404": {
-            "description": "Not Found"
-          }
-        }
-      },
-      "patch": {
-        "description": "",
-        "parameters": [
           {
-            "name": "id",
-            "in": "path",
+            "name": "body",
+            "in": "body",
             "required": true,
-            "type": "string"
+            "schema": {
+              "type": "object",
+              "properties": {
+                "username": {
+                  "type": "string",
+                  "example": "test01"
+                },
+                "password": {
+                  "type": "string",
+                  "example": "Test123?"
+                },
+                "email": {
+                  "type": "string",
+                  "example": "test@gmail.com"
+                },
+                "bio": {
+                  "type": "string",
+                  "example": "example bio description"
+                },
+                "birthdate": {
+                  "type": "string",
+                  "example": "01-01-2000"
+                },
+                "profileImage": {
+                  "type": "string",
+                  "example": "profile image url"
+                }
+              }
+            }
           }
         ],
         "responses": {
@@ -291,15 +368,55 @@
     },
     "/post/": {
       "get": {
-        "description": "",
+        "tags": [
+          "Post"
+        ],
+        "summary": "List Posts",
+        "description": "\r  You can send query with endpoint for search[], sort[], page and limit.\r  <ul> Examples:\r   <li>URL/?<b>search[field1]=value1&search[field2]=value2</b></li>\r   <li>URL/?<b>sort[field1]=1&sort[field2]=-1</b></li>\r   <li>URL/?<b>page=2&limit=1</b></li>\r  </ul>\r  ",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "type": "object",
+              "properties": {
+                "content": {
+                  "type": "string",
+                  "example": "Example Post"
+                }
+              }
+            }
+          }
+        ],
         "responses": {
-          "200": {
-            "description": "OK"
+          "default": {
+            "description": ""
           }
         }
       },
       "post": {
+        "tags": [
+          "Post"
+        ],
+        "summary": "Create Post",
         "description": "",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "type": "object",
+              "properties": {
+                "content": {
+                  "type": "string",
+                  "example": "Example Post"
+                }
+              }
+            }
+          }
+        ],
         "responses": {
           "201": {
             "description": "Created"
@@ -312,6 +429,10 @@
     },
     "/post/{id}": {
       "get": {
+        "tags": [
+          "Post"
+        ],
+        "summary": "Get Single Post",
         "description": "",
         "parameters": [
           {
@@ -328,6 +449,10 @@
         }
       },
       "put": {
+        "tags": [
+          "Post"
+        ],
+        "summary": "Update Post",
         "description": "",
         "parameters": [
           {
@@ -335,6 +460,20 @@
             "in": "path",
             "required": true,
             "type": "string"
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "type": "object",
+              "properties": {
+                "content": {
+                  "type": "string",
+                  "example": "Example Post"
+                }
+              }
+            }
           }
         ],
         "responses": {
@@ -347,6 +486,10 @@
         }
       },
       "delete": {
+        "tags": [
+          "Post"
+        ],
+        "summary": "Delete Single Post",
         "description": "",
         "parameters": [
           {
@@ -369,6 +512,10 @@
         }
       },
       "patch": {
+        "tags": [
+          "Post"
+        ],
+        "summary": "Update Post",
         "description": "",
         "parameters": [
           {
@@ -376,6 +523,20 @@
             "in": "path",
             "required": true,
             "type": "string"
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "type": "object",
+              "properties": {
+                "content": {
+                  "type": "string",
+                  "example": "Example Post"
+                }
+              }
+            }
           }
         ],
         "responses": {
@@ -401,7 +562,21 @@
             "in": "body",
             "required": true,
             "schema": {
-              "$ref": "#/definitions/Comment"
+              "type": "object",
+              "properties": {
+                "userId": {
+                  "type": "string",
+                  "example": "676b19c7af816bcb25dfc2cc"
+                },
+                "postId": {
+                  "type": "string",
+                  "example": "6769e39bd0142b31debd09fa"
+                },
+                "content": {
+                  "type": "string",
+                  "example": "example comment"
+                }
+              }
             }
           }
         ],
@@ -423,7 +598,21 @@
             "in": "body",
             "required": true,
             "schema": {
-              "$ref": "#/definitions/Comment"
+              "type": "object",
+              "properties": {
+                "userId": {
+                  "type": "string",
+                  "example": "676b19c7af816bcb25dfc2cc"
+                },
+                "postId": {
+                  "type": "string",
+                  "example": "6769e39bd0142b31debd09fa"
+                },
+                "content": {
+                  "type": "string",
+                  "example": "example comment"
+                }
+              }
             }
           }
         ],
@@ -470,6 +659,28 @@
             "in": "path",
             "required": true,
             "type": "string"
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "type": "object",
+              "properties": {
+                "userId": {
+                  "type": "string",
+                  "example": "676b19c7af816bcb25dfc2cc"
+                },
+                "postId": {
+                  "type": "string",
+                  "example": "6769e39bd0142b31debd09fa"
+                },
+                "content": {
+                  "type": "string",
+                  "example": "example comment"
+                }
+              }
+            }
           }
         ],
         "responses": {
@@ -519,6 +730,28 @@
             "in": "path",
             "required": true,
             "type": "string"
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "type": "object",
+              "properties": {
+                "userId": {
+                  "type": "string",
+                  "example": "676b19c7af816bcb25dfc2cc"
+                },
+                "postId": {
+                  "type": "string",
+                  "example": "6769e39bd0142b31debd09fa"
+                },
+                "content": {
+                  "type": "string",
+                  "example": "example comment"
+                }
+              }
+            }
           }
         ],
         "responses": {
@@ -533,24 +766,58 @@
     },
     "/like/": {
       "get": {
-        "description": "",
+        "tags": [
+          "Like"
+        ],
+        "summary": "List Likes",
+        "description": "\r  You can send query with endpoint for search[], sort[], page and limit.\r  <ul> Examples:\r   <li>URL/?<b>search[field1]=value1&search[field2]=value2</b></li>\r   <li>URL/?<b>sort[field1]=1&sort[field2]=-1</b></li>\r   <li>URL/?<b>page=2&limit=1</b></li>\r  </ul>\r  ",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "type": "object",
+              "properties": {
+                "userId": {
+                  "type": "string",
+                  "example": "676b19c7af816bcb25dfc2cc"
+                },
+                "postId": {
+                  "type": "string",
+                  "example": "6769e39bd0142b31debd09fa"
+                }
+              }
+            }
+          }
+        ],
         "responses": {
-          "200": {
-            "description": "OK"
+          "default": {
+            "description": ""
           }
         }
       },
       "post": {
+        "tags": [
+          "Like"
+        ],
+        "summary": "Create Likes",
         "description": "",
         "parameters": [
           {
             "name": "body",
             "in": "body",
+            "required": true,
             "schema": {
               "type": "object",
               "properties": {
+                "userId": {
+                  "type": "string",
+                  "example": "676b19c7af816bcb25dfc2cc"
+                },
                 "postId": {
-                  "example": "any"
+                  "type": "string",
+                  "example": "6769e39bd0142b31debd09fa"
                 }
               }
             }
@@ -568,6 +835,10 @@
     },
     "/like/{id}": {
       "get": {
+        "tags": [
+          "Like"
+        ],
+        "summary": "Get Single Like",
         "description": "",
         "parameters": [
           {
@@ -584,6 +855,10 @@
         }
       },
       "put": {
+        "tags": [
+          "Like"
+        ],
+        "summary": "Update Like",
         "description": "",
         "parameters": [
           {
@@ -591,6 +866,24 @@
             "in": "path",
             "required": true,
             "type": "string"
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "type": "object",
+              "properties": {
+                "userId": {
+                  "type": "string",
+                  "example": "676b19c7af816bcb25dfc2cc"
+                },
+                "postId": {
+                  "type": "string",
+                  "example": "6769e39bd0142b31debd09fa"
+                }
+              }
+            }
           }
         ],
         "responses": {
@@ -603,6 +896,10 @@
         }
       },
       "delete": {
+        "tags": [
+          "Like"
+        ],
+        "summary": "Delete Single Like",
         "description": "",
         "parameters": [
           {
@@ -625,6 +922,10 @@
         }
       },
       "patch": {
+        "tags": [
+          "Like"
+        ],
+        "summary": "Update Like",
         "description": "",
         "parameters": [
           {
@@ -632,6 +933,24 @@
             "in": "path",
             "required": true,
             "type": "string"
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "type": "object",
+              "properties": {
+                "userId": {
+                  "type": "string",
+                  "example": "676b19c7af816bcb25dfc2cc"
+                },
+                "postId": {
+                  "type": "string",
+                  "example": "6769e39bd0142b31debd09fa"
+                }
+              }
+            }
           }
         ],
         "responses": {
@@ -646,15 +965,63 @@
     },
     "/story/": {
       "get": {
-        "description": "",
+        "tags": [
+          "Story"
+        ],
+        "summary": "List Story",
+        "description": "\r  You can send query with endpoint for search[], sort[], page and limit.\r  <ul> Examples:\r   <li>URL/?<b>search[field1]=value1&search[field2]=value2</b></li>\r   <li>URL/?<b>sort[field1]=1&sort[field2]=-1</b></li>\r   <li>URL/?<b>page=2&limit=1</b></li>\r  </ul>\r  ",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "type": "object",
+              "properties": {
+                "content": {
+                  "type": "string",
+                  "example": "test story"
+                },
+                "mediaUrl": {
+                  "type": "string",
+                  "example": "media link"
+                }
+              }
+            }
+          }
+        ],
         "responses": {
-          "200": {
-            "description": "OK"
+          "default": {
+            "description": ""
           }
         }
       },
       "post": {
+        "tags": [
+          "Story"
+        ],
+        "summary": "Create Story",
         "description": "",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "type": "object",
+              "properties": {
+                "content": {
+                  "type": "string",
+                  "example": "test story"
+                },
+                "mediaUrl": {
+                  "type": "string",
+                  "example": "media link"
+                }
+              }
+            }
+          }
+        ],
         "responses": {
           "201": {
             "description": "Created"
@@ -667,6 +1034,10 @@
     },
     "/story/{id}": {
       "get": {
+        "tags": [
+          "Story"
+        ],
+        "summary": "Get Single Story",
         "description": "",
         "parameters": [
           {
@@ -683,6 +1054,10 @@
         }
       },
       "put": {
+        "tags": [
+          "Story"
+        ],
+        "summary": "Update Story",
         "description": "",
         "parameters": [
           {
@@ -690,6 +1065,24 @@
             "in": "path",
             "required": true,
             "type": "string"
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "type": "object",
+              "properties": {
+                "content": {
+                  "type": "string",
+                  "example": "test story"
+                },
+                "mediaUrl": {
+                  "type": "string",
+                  "example": "media link"
+                }
+              }
+            }
           }
         ],
         "responses": {
@@ -702,6 +1095,10 @@
         }
       },
       "delete": {
+        "tags": [
+          "Story"
+        ],
+        "summary": "Delete Single Story",
         "description": "",
         "parameters": [
           {
@@ -724,6 +1121,10 @@
         }
       },
       "patch": {
+        "tags": [
+          "Story"
+        ],
+        "summary": "Update Story",
         "description": "",
         "parameters": [
           {
@@ -731,6 +1132,24 @@
             "in": "path",
             "required": true,
             "type": "string"
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "type": "object",
+              "properties": {
+                "content": {
+                  "type": "string",
+                  "example": "test story"
+                },
+                "mediaUrl": {
+                  "type": "string",
+                  "example": "media link"
+                }
+              }
+            }
           }
         ],
         "responses": {
@@ -745,24 +1164,50 @@
     },
     "/follow/": {
       "get": {
-        "description": "",
+        "tags": [
+          "Follow"
+        ],
+        "summary": "List Follow",
+        "description": "\r  You can send query with endpoint for search[], sort[], page and limit.\r  <ul> Examples:\r   <li>URL/?<b>search[field1]=value1&search[field2]=value2</b></li>\r   <li>URL/?<b>sort[field1]=1&sort[field2]=-1</b></li>\r   <li>URL/?<b>page=2&limit=1</b></li>\r  </ul>\r  ",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "type": "object",
+              "properties": {
+                "followerId": {
+                  "type": "string",
+                  "example": "676b19c7af816bcb25dfc2cc"
+                }
+              }
+            }
+          }
+        ],
         "responses": {
-          "200": {
-            "description": "OK"
+          "default": {
+            "description": ""
           }
         }
       },
       "post": {
+        "tags": [
+          "Follow"
+        ],
+        "summary": "Create Follow",
         "description": "",
         "parameters": [
           {
             "name": "body",
             "in": "body",
+            "required": true,
             "schema": {
               "type": "object",
               "properties": {
                 "followerId": {
-                  "example": "any"
+                  "type": "string",
+                  "example": "676b19c7af816bcb25dfc2cc"
                 }
               }
             }
@@ -777,6 +1222,10 @@
     },
     "/follow/{id}": {
       "get": {
+        "tags": [
+          "Follow"
+        ],
+        "summary": "Get Single Follow",
         "description": "",
         "parameters": [
           {
@@ -793,6 +1242,10 @@
         }
       },
       "put": {
+        "tags": [
+          "Follow"
+        ],
+        "summary": "Update Follow",
         "description": "",
         "parameters": [
           {
@@ -800,6 +1253,20 @@
             "in": "path",
             "required": true,
             "type": "string"
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "type": "object",
+              "properties": {
+                "followerId": {
+                  "type": "string",
+                  "example": "676b19c7af816bcb25dfc2cc"
+                }
+              }
+            }
           }
         ],
         "responses": {
@@ -809,6 +1276,10 @@
         }
       },
       "delete": {
+        "tags": [
+          "Follow"
+        ],
+        "summary": "Delete Single Follow",
         "description": "",
         "parameters": [
           {
@@ -843,6 +1314,10 @@
         }
       },
       "patch": {
+        "tags": [
+          "Follow"
+        ],
+        "summary": "Update Follow",
         "description": "",
         "parameters": [
           {
@@ -850,6 +1325,20 @@
             "in": "path",
             "required": true,
             "type": "string"
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "type": "object",
+              "properties": {
+                "followerId": {
+                  "type": "string",
+                  "example": "676b19c7af816bcb25dfc2cc"
+                }
+              }
+            }
           }
         ],
         "responses": {
@@ -861,22 +1350,26 @@
     },
     "/message/": {
       "post": {
-        "description": "",
+        "tags": [
+          "Message"
+        ],
+        "summary": "Create Message",
+        "description": "If a person creates a new conversation, a conversation database will be created.",
         "parameters": [
           {
             "name": "body",
             "in": "body",
+            "required": true,
             "schema": {
               "type": "object",
               "properties": {
-                "conversationId": {
-                  "example": "any"
-                },
                 "receiverId": {
-                  "example": "any"
+                  "type": "string",
+                  "example": "676b19c7af816bcb25dfc2cc"
                 },
                 "message": {
-                  "example": "any"
+                  "type": "string",
+                  "example": "message content"
                 }
               }
             }
@@ -894,7 +1387,11 @@
     },
     "/message/conversation/{conversationId}": {
       "get": {
-        "description": "",
+        "tags": [
+          "Conversation"
+        ],
+        "summary": "Get Single Conversation",
+        "description": "http://127.0.0.1:8000/message/conversation/67768eba057952786db14e89",
         "parameters": [
           {
             "name": "conversationId",
@@ -912,7 +1409,11 @@
     },
     "/message/conversation/{conversationId}/details": {
       "get": {
-        "description": "",
+        "tags": [
+          "Conversation"
+        ],
+        "summary": "Get Single Conversation Details",
+        "description": "http://127.0.0.1:8000/message/conversation/67768eba057952786db14e89/details -- The relationships of the conversation in the details section are seen.",
         "parameters": [
           {
             "name": "conversationId",
@@ -930,10 +1431,14 @@
     },
     "/notification/": {
       "get": {
+        "tags": [
+          "Notification"
+        ],
+        "summary": "List Notifications",
         "description": "",
         "responses": {
-          "200": {
-            "description": "OK"
+          "default": {
+            "description": ""
           }
         }
       }

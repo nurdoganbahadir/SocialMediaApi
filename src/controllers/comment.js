@@ -38,7 +38,9 @@ module.exports = {
                 in:'body',
                 required:true,
                 schema:{
-                    $ref:"#/definitions/Comment"
+                  "userId": "676b19c7af816bcb25dfc2cc",
+                  "postId": "6769e39bd0142b31debd09fa",
+                  "content": "example comment"
                 }
             }
         */
@@ -94,7 +96,9 @@ module.exports = {
                 in:'body',
                 required:true,
                 schema:{
-                    $ref"#/definitions/Comment"
+                    "userId": "676b19c7af816bcb25dfc2cc",
+                   "postId": "6769e39bd0142b31debd09fa",
+                   "content": "example comment"
                 }
             }
         */

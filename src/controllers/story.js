@@ -4,6 +4,19 @@ const Story = require("../models/story");
 
 module.exports = {
   list: async (req, res) => {
+    /* 
+            #swagger.tags = ["Story"]
+            #swagger.summary = "List Story"]"
+            #swagger.description = `
+                You can send query with endpoint for search[], sort[], page and limit.
+                <ul> Examples:
+                    <li>URL/?<b>search[field1]=value1&search[field2]=value2</b></li>
+                    <li>URL/?<b>sort[field1]=1&sort[field2]=-1</b></li>
+                    <li>URL/?<b>page=2&limit=1</b></li>
+                </ul>
+            `
+        */
+
     const data = await Story.find().populate(
       "userId",
       "-password -__v -email -birthdate -followers -following -createdAt -updatedAt -bio"
@@ -17,6 +30,19 @@ module.exports = {
   },
 
   create: async (req, res) => {
+    /* 
+            #swagger.tags = ["Story"]
+            #swagger.summary = "Create Story"
+            #swagger.parameters['body'] = {
+                in:'body',
+                required:true,
+                schema:{
+                      "content": "test story",
+                      "mediaUrl":"media link"
+                }
+            }
+        */
+
     const data = await Story.create({ ...req.body, userId: req.user._id });
 
     res.status(201).send({
@@ -26,6 +52,11 @@ module.exports = {
   },
 
   read: async (req, res) => {
+    /* 
+           #swagger.tags = ["Story"]
+           #swagger.summary = "Get Single Story"
+        */
+
     const data = await Story.findOne({ _id: req.params.id });
 
     res.status(200).send({
@@ -35,6 +66,19 @@ module.exports = {
   },
 
   update: async (req, res) => {
+    /* 
+            #swagger.tags = ["Story"]
+            #swagger.summary = "Update Story"
+            #swagger.parameters['body'] = {
+                in:'body',
+                required:true,
+                schema:{
+                   "content": "test story",
+                    "mediaUrl":"media link"
+                }
+            }
+        */
+
     const data = await Story.updateOne({ _id: req.params.id }, req.body, {
       runValidators: true,
     });
@@ -47,6 +91,11 @@ module.exports = {
   },
 
   delete: async (req, res) => {
+    /* 
+            #swagger.tags = ["Story"]
+            #swagger.summary = "Delete Single Story"
+        */
+
     const data = await Story.deleteOne({ _id: req.params.id });
 
     res.status(data.deletedCount ? 204 : 404).send({

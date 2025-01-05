@@ -6,6 +6,19 @@ const Notification = require("../models/notification");
 
 module.exports = {
   sendMessage: async (req, res) => {
+    /* 
+            #swagger.tags = ["Message"]
+            #swagger.summary = "Create Message"
+            #swagger.description = "If a person creates a new conversation, a conversation database will be created."
+            #swagger.parameters['body'] = {
+                in:'body',
+                required:true,
+                schema:{
+                  "receiverId": "676b19c7af816bcb25dfc2cc",
+                  "message": "message content"
+                }
+            }
+        */
     try {
       const { conversationId, receiverId, message } = req.body;
 
@@ -48,6 +61,11 @@ module.exports = {
   },
 
   getMessages: async (req, res) => {
+    /* 
+           #swagger.tags = ["Conversation"]
+           #swagger.summary = "Get Single Conversation"
+           #swagger.description = "http://127.0.0.1:8000/message/conversation/67768eba057952786db14e89"
+        */
     const { conversationId } = req.params;
 
     const messages = await Message.find({ conversationId })
@@ -61,6 +79,11 @@ module.exports = {
   },
 
   getConversation: async (req, res) => {
+    /* 
+           #swagger.tags = ["Conversation"]
+           #swagger.summary = "Get Single Conversation Details"
+           #swagger.description = "http://127.0.0.1:8000/message/conversation/67768eba057952786db14e89/details -- The relationships of the conversation in the details section are seen."
+        */
     const { conversationId } = req.params;
 
     const conversation = await Conversation.findById(conversationId);

@@ -5,6 +5,19 @@ const User = require("../models/user");
 
 module.exports = {
   list: async (req, res) => {
+    /* 
+            #swagger.tags = ["Follow"]
+            #swagger.summary = "List Follow"]"
+            #swagger.description = `
+                You can send query with endpoint for search[], sort[], page and limit.
+                <ul> Examples:
+                    <li>URL/?<b>search[field1]=value1&search[field2]=value2</b></li>
+                    <li>URL/?<b>sort[field1]=1&sort[field2]=-1</b></li>
+                    <li>URL/?<b>page=2&limit=1</b></li>
+                </ul>
+            `
+        */
+
     const data = await res.getModelList(Follow);
 
     res.status(200).send({
@@ -15,6 +28,18 @@ module.exports = {
   },
 
   create: async (req, res) => {
+    /* 
+            #swagger.tags = ["Follow"]
+            #swagger.summary = "Create Follow"
+            #swagger.parameters['body'] = {
+                in:'body',
+                required:true,
+                schema:{
+                  "followerId": "676b19c7af816bcb25dfc2cc",
+                }
+            }
+        */
+
     const newFollow = await Follow.create({
       followingId: req.user._id,
       followerId: req.body.followerId,
@@ -57,6 +82,11 @@ module.exports = {
   },
 
   read: async (req, res) => {
+    /* 
+           #swagger.tags = ["Follow"]
+           #swagger.summary = "Get Single Follow"
+        */
+
     const data = await Follow.findOne({ _id: req.params.id });
 
     res.status(200).send({
@@ -66,6 +96,18 @@ module.exports = {
   },
 
   update: async (req, res) => {
+    /* 
+            #swagger.tags = ["Follow"]
+            #swagger.summary = "Update Follow"
+            #swagger.parameters['body'] = {
+                in:'body',
+                required:true,
+                schema:{
+                  "followerId": "676b19c7af816bcb25dfc2cc"
+                }
+            }
+        */
+
     const data = await Follow.updateOne({ _id: req.params.id }, req.body, {
       runValidators: true,
     });
@@ -77,6 +119,11 @@ module.exports = {
   },
 
   delete: async (req, res) => {
+    /* 
+            #swagger.tags = ["Follow"]
+            #swagger.summary = "Delete Single Follow"
+        */
+
     try {
       const { followerId } = req.body;
 
